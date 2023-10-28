@@ -11,7 +11,9 @@ turbo-frame::before {
 */
 
 .turbo-progress-bar {
-  @apply h-2 bg-emerald-200;
+  /* @apply h-2 bg-emerald-200; */
+  height: 20px;
+  background-color: black;
 }
 
 /* Buttons */
