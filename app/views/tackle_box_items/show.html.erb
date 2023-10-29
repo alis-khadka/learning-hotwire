@@ -11,12 +11,16 @@
     <div class="name-category">
       <%= @item.bait.name %> &bull; <%= @item.bait.category %>
     </div>
-    <%= render "stats", fish_catches: @fish_catches %>
+    <div id='stats'>
+      <%= render "stats", fish_catches: @fish_catches %>
+    </div>
   </div>
 
-  <%= render "fish_catches/form", fish_catch: @new_catch %>
+  <div id='fish_catch_form'>
+    <%= render "fish_catches/form", fish_catch: @new_catch %>
+  </div>
 
-  <div class="catches">
+  <div class="catches" id='fish_catches'>
     <%= render @fish_catches %>
   </div>
 </div>
