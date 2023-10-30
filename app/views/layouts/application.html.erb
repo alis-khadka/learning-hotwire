@@ -16,7 +16,9 @@
   <body>
     <%= render "layouts/header" %>
 
-    <%= render "layouts/flash" %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "layouts/flash" %>
+    <% end %>
 
     <main>
       <div id="<%= content_id %>">

@@ -20,8 +20,12 @@ class FishCatchesController < ApplicationController
   def update
     respond_to do |format|
       if @fish_catch.update(fish_catch_params)
-        format.html { redirect_to tackle_box_item_for_catch(@fish_catch) }
+        format.html do
+          flash[:notice] = "Catch sucessfully updated."
+          redirect_to tackle_box_item_for_catch(@fish_catch)
+        end
         format.turbo_stream do
+          flash.now[:notice] = "Catch sucessfully updated."
           @fish_catches = fish_catches_for_bait(@fish_catch.bait)
         end
       else
@@ -35,8 +39,12 @@ class FishCatchesController < ApplicationController
 
     respond_to do |format|
       if @fish_catch.save
-        format.html { redirect_to tackle_box_item_for_catch(@fish_catch) }
+        format.html do
+          flash[:notice] = "Catch sucessfully created."
+          redirect_to tackle_box_item_for_catch(@fish_catch)
+        end
         format.turbo_stream do
+          flash.now[:notice] = "Catch sucessfully created."
           @fish_catches = fish_catches_for_bait(@fish_catch.bait)
           @new_catch = current_user.fish_catches.new(bait: @fish_catch.bait)
         end
@@ -50,8 +58,12 @@ class FishCatchesController < ApplicationController
     @fish_catch.destroy
 
     respond_to do |format|
-      format.html { redirect_to tackle_box_item_for_catch(@fish_catch) }
+      format.html do
+        flash[:notice] = "Catch sucessfully deleted."
+        redirect_to tackle_box_item_for_catch(@fish_catch)
+      end
       format.turbo_stream do
+        flash.now[:notice] = "Catch sucessfully deleted."
         @fish_catches = fish_catches_for_bait(@fish_catch.bait)
       end
     end

@@ -1,3 +1,5 @@
+<%= render_turbo_flash_message %>
+
 <%= render_fish_catch_stats(@fish_catches) %>
 
 <%= turbo_stream.update 'fish_catch_form' do %>
