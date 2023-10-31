@@ -5,7 +5,7 @@ import wNumb from 'wnumb';
 // Connects to data-controller="range-slider"
 export default class extends Controller {
   static targets = ['slider', 'currentMin', 'currentMax']
-  static values = { min: Number, max: Number }
+  static values = { min: {type: Number, default: 1}, max: {type: Number, default: 10} }
 
   connect() {
     // this.sliderTarget.innerHTML = "Put a slider here!"
