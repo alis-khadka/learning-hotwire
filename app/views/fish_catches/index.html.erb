@@ -28,7 +28,9 @@
   <% end %>
 </div>
 
-<%= turbo_frame_tag 'catches' do %>
+<%= turbo_frame_tag 'catches',
+    autoscroll: true,
+    data: { autoscroll_block: 'start' } do %>
   <% if @fish_catches.any? %>
     <div class="fish-catches">
       <table>
