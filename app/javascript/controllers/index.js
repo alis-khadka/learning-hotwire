@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import FishCatchController from "./fish_catch_controller"
+application.register("fish-catch", FishCatchController)
+
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
