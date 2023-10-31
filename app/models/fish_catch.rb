@@ -1,7 +1,25 @@
 class FishCatch < ApplicationRecord
+  include ActionView::RecordIdentifier
+
   belongs_to :bait
   belongs_to :user
   has_many :likes, dependent: :destroy
+
+  after_create_commit -> {
+    broadcast_prepend_later_to "activity", target: "fish-catches",
+                          partial: "activity/fish_catch",
+                          locals: { fish_catch: self }
+  }
+
+  after_update_commit -> {
+    broadcast_replace_later_to "activity", target: "#{dom_id(self)}_details",
+                          partial: "activity/catch_details",
+                          locals: { fish_catch: self }
+  }
+
+  after_destroy_commit -> {
+    broadcast_remove_to "activity", target: dom_id(self)
+  }
 
   SPECIES = [
     "Brown Trout",
