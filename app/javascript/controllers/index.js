@@ -4,10 +4,11 @@
 
 import { application } from "./application"
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import FormController from "./form_controller"
 application.register("form", FormController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-// application.debug = true
